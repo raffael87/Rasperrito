@@ -3,16 +3,44 @@
 
 #include <string>
 
+#include "RobotSystem.h"
+
 class IGPIO
 {
 public:
-  virtual int SetDirection(const std::string & aDirection) = 0;
-  virtual int SetValue(const std::string & aValue) = 0;
-  virtual int GetValue(std::string & aReturnValue) = 0;
-  
+    /**
+    * Sets direction to the path.
+    * @param aDirection name of direction in sys path.
+    * @return Error code.
+    */
+    virtual GPIOError SetDirection(const std::string & aDirection) = 0;
+
+    /**
+    * Sets value to the path.
+    * @param aValue name of value in sys path.
+    * @return Error code.
+    */
+    virtual GPIOError SetValue(const std::string & aValue) = 0;
+
+    /**
+    * Gets value from the file.
+    * @param aReturnValue reference to the return value.
+    * @return Error code.
+    */
+    virtual GPIOError GetValue(std::string & aReturnValue) = 0;
+
 private:
-  virtual int ExportGPIO() = 0;
-  virtual int UnexportGPIO() = 0;
+    /**
+    * Exports pin.
+    * @return Error code.
+    */
+    virtual GPIOError ExportGPIO() = 0;
+
+    /**
+    * Unexports pin.
+    * @return Error code.
+    */
+    virtual GPIOError UnexportGPIO() = 0;
 
 };
 

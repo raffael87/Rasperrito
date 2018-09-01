@@ -1,8 +1,10 @@
 #include "CGPIO.h"
 
 #include <fstream>
-#include <iostream>
-#include <sstream>
+    #include <iostream>
+    #include <sstream>
+
+const std::string m_SystemPath = "/sys/class/gpio/";
 
 CGPIO::CGPIO(const std::string & aPinNumber) : m_PinNumber(aPinNumber)
 {
@@ -15,94 +17,109 @@ CGPIO::~CGPIO()
 }
 
 
-int CGPIO::ExportGPIO()
+GPIOError CGPIO::ExportGPIO()
 {
-  std::string sysString = "/sys/class/gpio/export";
-  std::ofstream exportGPIO(sysString.c_str());
+    GPIOError ReturnCode = GPIOError::ERROR;
+    const std::string sysString = m_SystemPath + "export";
+    std::ofstream exportGPIO(sysString.c_str());
 
-  if (!exportGPIO.is_open())
-  {
-    std::cout << "ERROR ExportGPIO()." << std::endl;
-    return -1;
-  }
+    if (!exportGPIO.is_open())
+    {
+        std::cout << "ERROR ExportGPIO()." << std::endl;
+    }
+    else
+    {
+        exportGPIO << m_PinNumber;
+        exportGPIO.close();
+        ReturnCode = GPIOError::OK;
+    }
 
-  exportGPIO << m_PinNumber;
-  exportGPIO.close();
-
-  return 0;
+    return ReturnCode;
 }
 
-int CGPIO::UnexportGPIO()
+GPIOError CGPIO::UnexportGPIO()
 {
-  std::string sysString = "/sys/class/gpio/unexport";
-  std::ofstream unexportGPIO(sysString.c_str());
+    GPIOError ReturnCode = GPIOError::ERROR;
+    std::string sysString = m_SystemPath + "unexport";
+    std::ofstream unexportGPIO(sysString.c_str());
 
-  if (!unexportGPIO.is_open())
-  {
-    std::cout << "ERROR UnexportGPIO()." << std::endl;
-    return -1;
-  }
+    if (!unexportGPIO.is_open())
+    {
+        std::cout << "ERROR UnexportGPIO()." << std::endl;
+    }
+    else
+    {
+        unexportGPIO << m_PinNumber;
+        unexportGPIO.close();
+        ReturnCode = GPIOError::OK;
+    }
 
-  unexportGPIO << m_PinNumber;
-  unexportGPIO.close();
-
-  return 0;
+    return ReturnCode;
 }
 
-int CGPIO::SetDirection(const std::string & aDirection)
+GPIOError CGPIO::SetDirection(const std::string & aDirection)
 {
-  std::string directionString = "/sys/class/gpio/gpio" + m_PinNumber + "/direction";
-  std::ofstream setDirectionGPIO(directionString.c_str());
+    GPIOError ReturnCode = GPIOError::ERROR;
 
-  if (!setDirectionGPIO.is_open())
-  {
-    std::cout << "ERROR SetDirection()" << std::endl;
-    return -1;
-  }
+    std::string directionString = m_SystemPath + "gpio" + m_PinNumber + "/direction";
+    std::ofstream setDirectionGPIO(directionString.c_str());
 
-  setDirectionGPIO << aDirection;
-  setDirectionGPIO.close();
+    if (!setDirectionGPIO.is_open())
+    {
+        std::cout << "ERROR SetDirection()" << std::endl;
+    }
+    else
+    {
+        setDirectionGPIO << aDirection;
+        setDirectionGPIO.close();
+        ReturnCode = GPIOError::OK;
+    }
 
-  return 0;
+    return ReturnCode;
 }
 
-int CGPIO::SetValue(const std::string & aValue)
+GPIOError CGPIO::SetValue(const std::string & aValue)
 {
-  std::string valueString = "/sys/class/gpio/gpio" + m_PinNumber + "/value";
-  std::ofstream setValueGPIO(valueString.c_str());
+    GPIOError ReturnCode = GPIOError::ERROR;
+    std::string valueString = m_SystemPath + "gpio" + m_PinNumber + "/value";
+    std::ofstream setValueGPIO(valueString.c_str());
 
-  if (!setValueGPIO.is_open())
-  {
-    std::cout << "ERROR SetValue" << std::endl;
-    return -1;
-  }
+    if (!setValueGPIO.is_open())
+    {
+        std::cout << "ERROR SetValue" << std::endl;
+    }
+    else
+    {
+        setValueGPIO << aValue;
+        setValueGPIO.close();
+        ReturnCode = GPIOError::OK;
+    }
 
-  setValueGPIO << aValue;
-  setValueGPIO.close();
-
-  return 0;
+    return ReturnCode;
 }
 
-int CGPIO::GetValue(std::string & aReturnValue)
+GPIOError CGPIO::GetValue(std::string & aReturnValue)
 {
-  std::string valueString = "/sys/class/gpio/gpio" + m_PinNumber + "/value";
-  std::ifstream getValueGPIO(valueString.c_str());
+    GPIOError ReturnCode = GPIOError::ERROR;
+    std::string valueString = m_SystemPath + "gpio" + m_PinNumber + "/value";
+    std::ifstream getValueGPIO(valueString.c_str());
 
-  if (!getValueGPIO.is_open())
-  {
-    std::cout << "ERROR GetValue" << std::endl;
-    return -1;
-  }
-  getValueGPIO >> aReturnValue;
+    if (!getValueGPIO.is_open())
+    {
+        std::cout << "ERROR GetValue" << std::endl;
+    }
+    else
+    {
+        getValueGPIO >> aReturnValue;
 
-  if(aReturnValue != "0")
-  {
-    aReturnValue = "1";
-  }
-  else
-  {
-    aReturnValue = "0";
-  }
-  getValueGPIO.close();
-  return 0;
+        if (aReturnValue != "0")
+        {
+            aReturnValue = "1";
+        }
+
+        getValueGPIO.close();
+        ReturnCode = GPIOError::OK;
+    }
+
+    return ReturnCode;
 }

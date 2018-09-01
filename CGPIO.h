@@ -6,18 +6,33 @@
 class CGPIO : public IGPIO
 {
 public:
-  CGPIO(const std::string & aPinNumber);
-  virtual ~CGPIO();
+    CGPIO(const std::string & aPinNumber);
+    virtual ~CGPIO();
 
-
-  int SetDirection(const std::string & aDirection) override;
-  int SetValue(const std::string & aValue) override;
-  int GetValue(std::string & aReturnValue) override;
+    /**
+    IGPIO Methods.
+    * /@
+    */
+    GPIOError SetDirection(const std::string & aDirection) override;
+    GPIOError SetValue(const std::string & aValue) override;
+    GPIOError GetValue(std::string & aReturnValue) override;
+    /**
+    * @/
+    */
 
 private:
-      int ExportGPIO() override;
-      int UnexportGPIO() override;
-      std::string m_PinNumber;
+    /**
+    IGPIO Methods
+    * /@
+    */
+    GPIOError ExportGPIO() override;
+    GPIOError UnexportGPIO() override;
+    /**
+    * @ /
+    */
+
+    std::string m_PinNumber;                //!< Number of the gpio pin.
+    static const std::string SystemPath;    //!< Static part of the system path.
 };
 
 #endif
