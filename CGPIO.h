@@ -16,6 +16,7 @@ public:
     GPIOError SetDirection(const std::string & aDirection) override;
     GPIOError SetValue(const std::string & aValue) override;
     GPIOError GetValue(std::string & aReturnValue) override;
+    GPIOError SetPWM(const std::string & aFrequency) override;
     /**
     * @/
     */

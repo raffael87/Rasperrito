@@ -8,6 +8,12 @@
 class IGPIO
 {
 public:
+
+    IGPIO()
+    {}
+
+    virtual ~IGPIO()
+    {}
     /**
     * Sets direction to the path.
     * @param aDirection name of direction in sys path.
@@ -28,6 +34,8 @@ public:
     * @return Error code.
     */
     virtual GPIOError GetValue(std::string & aReturnValue) = 0;
+
+    virtual GPIOError SetPWM(const std::string & aFrequency) = 0;
 
 private:
     /**
