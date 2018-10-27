@@ -10,6 +10,10 @@
 		4D81A59D2185269700FC1012 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4D81A59C2185269700FC1012 /* main.cpp */; };
 		4D81A5AB2185287300FC1012 /* CGPIO.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4D81A5A42185287300FC1012 /* CGPIO.cpp */; };
 		4D81A5AC2185287300FC1012 /* CSensorEcho.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4D81A5A62185287300FC1012 /* CSensorEcho.cpp */; };
+		4D81A5C121852D1700FC1012 /* CStateManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4D81A5BA21852D1600FC1012 /* CStateManager.cpp */; };
+		4D81A5C221852D1700FC1012 /* CStatePause.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4D81A5BD21852D1600FC1012 /* CStatePause.cpp */; };
+		4D81A5C321852D1700FC1012 /* CStateMove.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4D81A5BE21852D1600FC1012 /* CStateMove.cpp */; };
+		4D81A5C421852D1700FC1012 /* CSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4D81A5BF21852D1600FC1012 /* CSystem.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -35,6 +39,15 @@
 		4D81A5A82185287300FC1012 /* IComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IComponent.h; sourceTree = "<group>"; };
 		4D81A5A92185287300FC1012 /* CComposite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CComposite.h; sourceTree = "<group>"; };
 		4D81A5AA2185287300FC1012 /* IGPIO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGPIO.h; sourceTree = "<group>"; };
+		4D81A5B821852D1600FC1012 /* CStatePause.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CStatePause.h; sourceTree = "<group>"; };
+		4D81A5B921852D1600FC1012 /* CSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSystem.h; sourceTree = "<group>"; };
+		4D81A5BA21852D1600FC1012 /* CStateManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CStateManager.cpp; sourceTree = "<group>"; };
+		4D81A5BB21852D1600FC1012 /* IState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IState.h; sourceTree = "<group>"; };
+		4D81A5BC21852D1600FC1012 /* CStateManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CStateManager.h; sourceTree = "<group>"; };
+		4D81A5BD21852D1600FC1012 /* CStatePause.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CStatePause.cpp; sourceTree = "<group>"; };
+		4D81A5BE21852D1600FC1012 /* CStateMove.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CStateMove.cpp; sourceTree = "<group>"; };
+		4D81A5BF21852D1600FC1012 /* CSystem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CSystem.cpp; sourceTree = "<group>"; };
+		4D81A5C021852D1600FC1012 /* CStateMove.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CStateMove.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +80,7 @@
 		4D81A59B2185269700FC1012 /* src */ = {
 			isa = PBXGroup;
 			children = (
+				4D81A5B721852D1600FC1012 /* system */,
 				4D81A5A72185287300FC1012 /* CComponentHandler.h */,
 				4D81A5A92185287300FC1012 /* CComposite.h */,
 				4D81A5A42185287300FC1012 /* CGPIO.cpp */,
@@ -78,6 +92,22 @@
 				4D81A59C2185269700FC1012 /* main.cpp */,
 			);
 			path = src;
+			sourceTree = "<group>";
+		};
+		4D81A5B721852D1600FC1012 /* system */ = {
+			isa = PBXGroup;
+			children = (
+				4D81A5B821852D1600FC1012 /* CStatePause.h */,
+				4D81A5B921852D1600FC1012 /* CSystem.h */,
+				4D81A5BA21852D1600FC1012 /* CStateManager.cpp */,
+				4D81A5BB21852D1600FC1012 /* IState.h */,
+				4D81A5BC21852D1600FC1012 /* CStateManager.h */,
+				4D81A5BD21852D1600FC1012 /* CStatePause.cpp */,
+				4D81A5BE21852D1600FC1012 /* CStateMove.cpp */,
+				4D81A5BF21852D1600FC1012 /* CSystem.cpp */,
+				4D81A5C021852D1600FC1012 /* CStateMove.h */,
+			);
+			path = system;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -136,7 +166,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4D81A5C321852D1700FC1012 /* CStateMove.cpp in Sources */,
 				4D81A5AB2185287300FC1012 /* CGPIO.cpp in Sources */,
+				4D81A5C121852D1700FC1012 /* CStateManager.cpp in Sources */,
+				4D81A5C421852D1700FC1012 /* CSystem.cpp in Sources */,
+				4D81A5C221852D1700FC1012 /* CStatePause.cpp in Sources */,
 				4D81A5AC2185287300FC1012 /* CSensorEcho.cpp in Sources */,
 				4D81A59D2185269700FC1012 /* main.cpp in Sources */,
 			);
