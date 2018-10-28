@@ -1,13 +1,13 @@
-#ifndef C_GPIO_H
-#define C_GPIO_H
+#ifndef GPIO_H
+#define GPIO_H
 
 #include "IGPIO.h"
 
-class CGPIO : public IGPIO
+class GPIO : public IGPIO
 {
 public:
-    CGPIO(const std::string & aPinNumber);
-    virtual ~CGPIO();
+    GPIO(const std::string & aPinNumber);
+    virtual ~GPIO();
 
     /**
     IGPIO Methods.

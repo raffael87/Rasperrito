@@ -1,4 +1,4 @@
-#include "CGPIO.h"
+#include "GPIO.h"
 
 #include <fstream>
 #include <iostream>
@@ -6,18 +6,18 @@
 
 const std::string m_SystemPath = "/sys/class/gpio/";
 
-CGPIO::CGPIO(const std::string & aPinNumber) : m_PinNumber(aPinNumber)
+GPIO::GPIO(const std::string & aPinNumber) : m_PinNumber(aPinNumber)
 {
     ExportGPIO();
 }
 
-CGPIO::~CGPIO()
+GPIO::~GPIO()
 {
     UnexportGPIO();
 }
 
 
-GPIOError CGPIO::ExportGPIO()
+GPIOError GPIO::ExportGPIO()
 {
     GPIOError ReturnCode = GPIOError::ERROR;
     const std::string sysString = m_SystemPath + "export";
@@ -37,7 +37,7 @@ GPIOError CGPIO::ExportGPIO()
     return ReturnCode;
 }
 
-GPIOError CGPIO::UnexportGPIO()
+GPIOError GPIO::UnexportGPIO()
 {
     GPIOError ReturnCode = GPIOError::ERROR;
     std::string sysString = m_SystemPath + "unexport";
@@ -57,7 +57,7 @@ GPIOError CGPIO::UnexportGPIO()
     return ReturnCode;
 }
 
-GPIOError CGPIO::SetDirection(const std::string & aDirection)
+GPIOError GPIO::SetDirection(const std::string & aDirection)
 {
     GPIOError ReturnCode = GPIOError::ERROR;
 
@@ -78,7 +78,7 @@ GPIOError CGPIO::SetDirection(const std::string & aDirection)
     return ReturnCode;
 }
 
-GPIOError CGPIO::SetValue(const std::string & aValue)
+GPIOError GPIO::SetValue(const std::string & aValue)
 {
     GPIOError ReturnCode = GPIOError::ERROR;
     std::string valueString = m_SystemPath + "gpio" + m_PinNumber + "/value";
@@ -98,7 +98,7 @@ GPIOError CGPIO::SetValue(const std::string & aValue)
     return ReturnCode;
 }
 
-GPIOError CGPIO::GetValue(std::string & aReturnValue)
+GPIOError GPIO::GetValue(std::string & aReturnValue)
 {
     GPIOError ReturnCode = GPIOError::ERROR;
     std::string valueString = m_SystemPath + "gpio" + m_PinNumber + "/value";
@@ -124,7 +124,7 @@ GPIOError CGPIO::GetValue(std::string & aReturnValue)
     return ReturnCode;
 }
 
-GPIOError CGPIO::SetPWM(const std::string & aFrequency)
+GPIOError GPIO::SetPWM(const std::string & aFrequency)
 {
     GPIOError ReturnCode = GPIOError::ERROR;
 

@@ -1,5 +1,5 @@
 #include "SensorEcho.h"
-#include "CGPIO.h"
+#include "GPIO.h"
 
 #include <iostream>
 namespace Component
@@ -9,8 +9,8 @@ const std::string SensorEcho::FALSE = "0";
 
 SensorEcho::SensorEcho(const std::string& aEchoPin, const std::string& aTriggerPin) : mThreadActive(false)
 {
-    mpGPIOEcho = std::unique_ptr<CGPIO>(new CGPIO(aEchoPin));
-    mpGPIOTrigger = std::unique_ptr<CGPIO>(new CGPIO(aTriggerPin));
+    mpGPIOEcho = std::unique_ptr<GPIO>(new GPIO(aEchoPin));
+    mpGPIOTrigger = std::unique_ptr<GPIO>(new GPIO(aTriggerPin));
 
 }
 

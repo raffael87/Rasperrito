@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4D81A59D2185269700FC1012 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4D81A59C2185269700FC1012 /* main.cpp */; };
-		4D81A5AB2185287300FC1012 /* CGPIO.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4D81A5A42185287300FC1012 /* CGPIO.cpp */; };
+		4D81A5AB2185287300FC1012 /* GPIO.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4D81A5A42185287300FC1012 /* GPIO.cpp */; };
 		4D81A5AC2185287300FC1012 /* SensorEcho.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4D81A5A62185287300FC1012 /* SensorEcho.cpp */; };
 		4D81A5C421852D1700FC1012 /* System.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4D81A5BF21852D1600FC1012 /* System.cpp */; };
 		4D81A5CA2186019B00FC1012 /* ComponentManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4D81A5C92186019B00FC1012 /* ComponentManager.cpp */; };
@@ -29,8 +29,8 @@
 /* Begin PBXFileReference section */
 		4D81A5992185269700FC1012 /* Rasperrito */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Rasperrito; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D81A59C2185269700FC1012 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
-		4D81A5A32185287300FC1012 /* CGPIO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CGPIO.h; sourceTree = "<group>"; };
-		4D81A5A42185287300FC1012 /* CGPIO.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CGPIO.cpp; sourceTree = "<group>"; };
+		4D81A5A32185287300FC1012 /* GPIO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPIO.h; sourceTree = "<group>"; };
+		4D81A5A42185287300FC1012 /* GPIO.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GPIO.cpp; sourceTree = "<group>"; };
 		4D81A5A52185287300FC1012 /* SensorEcho.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SensorEcho.h; sourceTree = "<group>"; };
 		4D81A5A62185287300FC1012 /* SensorEcho.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SensorEcho.cpp; sourceTree = "<group>"; };
 		4D81A5A72185287300FC1012 /* ComponentHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComponentHandler.h; sourceTree = "<group>"; };
@@ -112,8 +112,8 @@
 			isa = PBXGroup;
 			children = (
 				4D81A5AA2185287300FC1012 /* IGPIO.h */,
-				4D81A5A42185287300FC1012 /* CGPIO.cpp */,
-				4D81A5A32185287300FC1012 /* CGPIO.h */,
+				4D81A5A42185287300FC1012 /* GPIO.cpp */,
+				4D81A5A32185287300FC1012 /* GPIO.h */,
 				4D81A5A62185287300FC1012 /* SensorEcho.cpp */,
 				4D81A5A52185287300FC1012 /* SensorEcho.h */,
 			);
@@ -176,7 +176,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4D81A5AB2185287300FC1012 /* CGPIO.cpp in Sources */,
+				4D81A5AB2185287300FC1012 /* GPIO.cpp in Sources */,
 				4D81A5CA2186019B00FC1012 /* ComponentManager.cpp in Sources */,
 				4D81A5C421852D1700FC1012 /* System.cpp in Sources */,
 				4D81A5AC2185287300FC1012 /* SensorEcho.cpp in Sources */,
