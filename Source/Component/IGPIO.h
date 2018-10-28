@@ -3,7 +3,7 @@
 
 #include <string>
 
-#include "RobotSystem.h"
+#include "../System/RobotSystem.h"
 
 class IGPIO
 {

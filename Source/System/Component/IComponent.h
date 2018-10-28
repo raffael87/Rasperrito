@@ -10,4 +10,4 @@ public:
     virtual void DoSomething() = 0;
 };
 
-#endif
+#endif // I_COMPONENT_H

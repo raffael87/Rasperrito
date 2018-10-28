@@ -1,48 +1,49 @@
-#include "CSensorEcho.h"
+#include "SensorEcho.h"
 #include "CGPIO.h"
 
 #include <iostream>
+namespace Component
+{
+const std::string SensorEcho::TRUE = "1";
+const std::string SensorEcho::FALSE = "0";
 
-const std::string CSensorEcho::TRUE = "1";
-const std::string CSensorEcho::FALSE = "0";
-
-CSensorEcho::CSensorEcho(const std::string& aEchoPin, const std::string& aTriggerPin) : mThreadActive(false)
+SensorEcho::SensorEcho(const std::string& aEchoPin, const std::string& aTriggerPin) : mThreadActive(false)
 {
     mpGPIOEcho = std::unique_ptr<CGPIO>(new CGPIO(aEchoPin));
     mpGPIOTrigger = std::unique_ptr<CGPIO>(new CGPIO(aTriggerPin));
 
 }
 
-CSensorEcho::~CSensorEcho()
+SensorEcho::~SensorEcho()
 {
 
 }
 
-void CSensorEcho::DoSomething()
+void SensorEcho::DoSomething()
 {
 
 }
 
-void CSensorEcho::Execute()
+void SensorEcho::Execute()
 {
 }
 
-void CSensorEcho::Start()
+void SensorEcho::Start()
 {
     if (isEnabled())
     {
         mThreadActive = true;
-        mThread = std::thread (&CSensorEcho::Run, this); //Move assignment
+        mThread = std::thread (&SensorEcho::Run, this); //Move assignment
         mThread.detach();
     }
 }
 
-void CSensorEcho::Stop()
+void SensorEcho::Stop()
 {
     mThreadActive = false;
 }
 
-double CSensorEcho::GetDistance() const
+double SensorEcho::GetDistance() const
 {
     mpGPIOTrigger->SetValue(TRUE);
     std::this_thread::sleep_for(std::chrono::microseconds(100));
@@ -70,7 +71,7 @@ double CSensorEcho::GetDistance() const
     return (TimeElapsed.count() * 34300) / 2;
 }
 
-void CSensorEcho::Run()
+void SensorEcho::Run()
 {
     while (mThreadActive)
     {
@@ -78,4 +79,6 @@ void CSensorEcho::Run()
         std::cout << "Distance: " << d << std::endl;
         std::this_thread::sleep_for(std::chrono::milliseconds(100));
     }
+}
+    
 }

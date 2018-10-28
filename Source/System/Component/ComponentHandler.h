@@ -1,7 +1,7 @@
-#ifndef C_COMPONENT_HANDLER_H
-#define C_COMPONENT_HANDLER_H
+#ifndef COMPONENT_HANDLER_H
+#define COMPONENT_HANDLER_H
 
-class CComponentHandler
+class ComponentHandler
 {
 public:
     virtual void Enable()
@@ -19,10 +19,10 @@ public:
     }
     
 protected:
-    CComponentHandler() : mEnabled(true) {}
+    ComponentHandler() : mEnabled(true) {}
 
 private:
     bool mEnabled;
 };
 
-#endif
+#endif // COMPONENT_HANDLER_H

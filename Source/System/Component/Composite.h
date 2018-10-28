@@ -1,14 +1,15 @@
-#ifndef C_COMPOSITE_H
-#define C_COMPOSITE_H
+#ifndef COMPOSITE_H
+#define COMPOSITE_H
 
 #include <vector>
+#include <memory>
 
 template <typename Component>
-class CComposite : public Component
+class Composite : public Component
 {
 public:
 
-    virtual ~CComposite()
+    virtual ~Composite()
     {
 
     }
@@ -35,7 +36,7 @@ public:
     }
 
 protected:
-    std::vector<Component*> mChildren;
+    std::vector<std::shared_ptr<Component*> > mChildren;
 };
 
-#endif
+#endif // COMPOSITE_H
